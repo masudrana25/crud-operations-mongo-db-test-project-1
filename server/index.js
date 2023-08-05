@@ -36,6 +36,14 @@ app.put('/updateUser/:id', async (req, res) => {
   res.json(users);
 });
 
+//.delete user 
+app.delete('/deleteUser/:id', (req, res) => {
+  const id = req.params.id;
+  UserModel.findByIdAndDelete({ _id: id })
+    .then(res => res.json(res))
+    .catch(err => console.log(err))
+})
+
 app.post("/createUser", async (req, res) => {
   try {
      await UserModel.create(req.body)
