@@ -6,11 +6,11 @@ const UserModel = require('./models/Users');
 const app = express();
 app.use(cors());
 app.use(express.json());
-
-// mongoose.connect('mongodb://127.0.0.1:27017/crud')
+ 
 const connectToDB = async () => {
   try {
-    await mongoose.connect('mongodb://127.0.0.1:27017/crud');
+    await mongoose.connect('mongodb+srv://crud:crud@cluster0.ws5da9q.mongodb.net/crud'); 
+    // mongoose.connect('mongodb://127.0.0.1:27017/crud') for local mongodb compass connecting
     console.log('DB is connected');
   } catch (error) {
     console.log('DB is not connected');
