@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'preact/hooks';
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 const User = () => {
   const [users, setUsers] = useState();
-  const navigate = useNavigate();
   useEffect(async () => {
     const data = await axios.get('http://localhost:3300/');
     await setUsers(data.data);
@@ -18,7 +17,6 @@ const User = () => {
       .delete('http://localhost:3300/deleteUser/' + id)
       .then(res => {
         console.log(res);
-        
       })
       .catch(err => console.error(err));
     location.reload(true);

@@ -12,16 +12,11 @@ const UpdateUser = () => {
   const navigate = useNavigate();
 
   useEffect(async () => {
-     axios.get('http://localhost:3300/getUser/' + id).then(result => {
-      console.log(result);
-      setName(result.data.name);
-      setEmail(result.data.email);
-      setAge(result.data.age);
+    axios.get('http://localhost:3300/getUser/' + id).then(result => {
+      setName(result.data[0].name);
+      setEmail(result.data[0].email);
+      setAge(result.data[0].age);
     });
-    //  await setName(data.data.name);
-    //  await setEmail(data.data.email);
-    //  await setAge(data.data.age);
-    //  console.log(data);
   }, []);
 
   const handleSubmit = e => {
@@ -70,7 +65,7 @@ const UpdateUser = () => {
                 placeholder="Enter Age"
                 className="form-control"
                 value={age}
-                onChange={(e) => setAge(e.target.value)}
+                onChange={e => setAge(e.target.value)}
               />
             </div>
             <button className="btn btn-success">Update</button>
